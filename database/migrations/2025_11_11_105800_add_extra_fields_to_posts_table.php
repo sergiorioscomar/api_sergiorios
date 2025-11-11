@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('titulo')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->string('imagen')->nullable();
+            $table->string('categoria')->nullable();
+            $table->string('url')->nullable();
+            $table->timestamp('fecha_publicacion')->nullable();
+            $table->string('autor')->nullable();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn([
+                'titulo',
+                'descripcion',
+                'imagen',
+                'categoria',
+                'url',
+                'fecha_publicacion',
+                'autor',
+            ]);
+        });
+    }
+};
